@@ -31,6 +31,7 @@
       <aside class="sidebar">
         <div class="doc-meta"><div class="file-icon">PDF</div><div><strong id="fileName">Document.pdf</strong><small id="pageCount">0 pages</small></div></div>
         <div class="search-box"><input id="searchInput" placeholder="Find words or phrases" /><button id="clearSearch" title="Clear search">x</button></div>
+        <div id="duplicateNotice" class="duplicate-notice hidden"><strong id="duplicateTitle"></strong><span id="duplicateDetails"></span><button id="selectDuplicates">Select matches on this page</button></div>
         <div class="text-heading"><span id="matchCount">TEXT ON PAGE</span><button id="selectAll" title="Select visible results">Select all</button></div>
         <div id="textList" class="text-list"></div>
       </aside>
@@ -40,6 +41,7 @@
           <div class="tool-group color-tools" id="colorTools"><button class="swatch active" data-color="#f7d84b" style="--c:#f7d84b" title="Yellow"></button><button class="swatch" data-color="#77e5c0" style="--c:#77e5c0" title="Mint"></button><button class="swatch" data-color="#99c7ff" style="--c:#99c7ff" title="Blue"></button><button class="swatch" data-color="#ff9b9b" style="--c:#ff9b9b" title="Rose"></button><button class="swatch" data-color="#000000" style="--c:#000000" title="Black"></button><button class="swatch" data-color="#ffffff" style="--c:#ffffff" title="White"></button><label class="custom-color" title="Choose any color"><input id="customColor" type="color" value="#f7d84b" />+</label></div>
           <label class="opacity-control" title="Change highlight and fade strength"><span>Opacity</span><input id="opacity" type="range" min="10" max="100" value="45" /><output id="opacityValue">45%</output></label>
           <span id="selectionStatus" class="selection-status">Select text from the list</span>
+          <div id="editInspector" class="edit-inspector hidden"><span>Selected edit</span><button id="editReplacement" class="plain-button">Edit text</button><button id="growEdit" class="plain-button" title="Make the edit area larger">Bigger</button><button id="shrinkEdit" class="plain-button" title="Make the edit area smaller">Smaller</button><button id="deleteEdit" class="plain-button danger">Delete</button></div>
           <button id="rotate" class="plain-button" disabled>Rotate</button><button id="saveProject" class="plain-button" disabled>Save</button><button id="undo" class="plain-button" disabled>Undo</button>
           <button id="download" class="download" disabled>Download edited PDF</button>
         </div>
@@ -48,7 +50,7 @@
       </section>
     </section>
   </main>
-  <dialog id="replaceDialog"><form method="dialog"><h2>Replace selected text</h2><p id="replaceOriginal"></p><textarea id="replacementText" placeholder="Type the replacement text"></textarea><div><button value="cancel" class="plain-button">Cancel</button><button id="confirmReplace" value="default" class="download">Apply replacement</button></div></form></dialog>
+  <dialog id="replaceDialog"><form method="dialog"><h2 id="replaceTitle">Replace selected text</h2><p id="replaceOriginal"></p><textarea id="replacementText" placeholder="Type the replacement text"></textarea><div><button value="cancel" class="plain-button">Cancel</button><button id="confirmReplace" value="default" class="download">Apply replacement</button></div></form></dialog>
   <div id="toast" class="toast"></div><div id="dropShield" class="drop-shield hidden">Drop your file to open it</div>
   <script type="module" src="app.js"></script>
 </body>
