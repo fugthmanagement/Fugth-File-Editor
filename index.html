@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FUGTH File Editor</title>
   <meta name="description" content="A private, browser-based PDF text editor." />
+  <meta name="theme-color" content="#111111" /><link rel="manifest" href="manifest.webmanifest" /><link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="extra.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs" type="module"></script>
@@ -14,7 +15,7 @@
     <header class="topbar">
       <a class="brand" href="#"><span>F</span><div>FUGTH <small>FILE EDITOR</small></div></a>
       <p class="privacy">Private browser editor &middot; Your document is never uploaded</p>
-      <label class="upload small-upload">Open file<input id="fileInputTop" type="file" accept="application/pdf,image/*,.txt,.md,.docx" hidden /></label>
+      <button id="installApp" class="plain-button hidden">Install app</button><label class="upload small-upload">Open file<input id="fileInputTop" type="file" accept="application/pdf,image/*,.txt,.md,.docx" hidden /></label>
     </header>
 
     <section id="welcome" class="welcome">
@@ -35,7 +36,7 @@
       </aside>
       <section class="editor">
         <div class="toolbar">
-          <div class="tool-group"><button data-action="highlight" class="tool active">Highlight</button><button data-action="redact" class="tool">Cover</button><button data-action="clean" class="tool">Clean</button><button data-action="replace" class="tool">Replace</button></div>
+          <div class="tool-group"><button data-action="highlight" data-formats="pdf image text" class="tool active">Highlight</button><button data-action="redact" data-formats="pdf image text" class="tool">Cover</button><button data-action="clean" data-formats="pdf image text" class="tool">Erase</button><button data-action="replace" data-formats="pdf text" class="tool">Replace</button></div>
           <div class="tool-group color-tools" id="colorTools"><button class="swatch active" data-color="#f7d84b" style="--c:#f7d84b" title="Yellow"></button><button class="swatch" data-color="#77e5c0" style="--c:#77e5c0" title="Mint"></button><button class="swatch" data-color="#99c7ff" style="--c:#99c7ff" title="Blue"></button><button class="swatch" data-color="#ff9b9b" style="--c:#ff9b9b" title="Rose"></button></div>
           <span id="selectionStatus" class="selection-status">Select text from the list</span>
           <button id="rotate" class="plain-button" disabled>Rotate</button><button id="saveProject" class="plain-button" disabled>Save</button><button id="undo" class="plain-button" disabled>Undo</button>
