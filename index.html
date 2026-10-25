@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FUGTH File Editor</title>
+  <meta name="description" content="A private, browser-based PDF text editor." />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs" type="module"></script>
+</head>
+<body>
+  <main>
+    <header class="topbar">
+      <a class="brand" href="#"><span>F</span><div>FUGTH <small>FILE EDITOR</small></div></a>
+      <p class="privacy">Private browser editor &middot; Your document is never uploaded</p>
+      <label class="upload small-upload">Open PDF<input id="fileInputTop" type="file" accept="application/pdf" hidden /></label>
+    </header>
+
+    <section id="welcome" class="welcome">
+      <div class="eyebrow">DOCUMENT TOOLS</div>
+      <h1>Edit the words inside<br />your PDF.</h1>
+      <p>Open a PDF, find text instantly, then highlight, cover, or replace selected text. Everything happens in your browser.</p>
+      <label class="upload hero-upload">Choose a PDF<input id="fileInput" type="file" accept="application/pdf" hidden /></label>
+      <p class="drop-hint">or drop a PDF anywhere on this page</p>
+      <div class="feature-row"><span>Find text</span><span>Cover sensitive details</span><span>Add replacement text</span><span>Download your copy</span></div>
+    </section>
+
+    <section id="workspace" class="workspace hidden">
+      <aside class="sidebar">
+        <div class="doc-meta"><div class="file-icon">PDF</div><div><strong id="fileName">Document.pdf</strong><small id="pageCount">0 pages</small></div></div>
+        <div class="search-box"><input id="searchInput" placeholder="Find words or phrases" /><button id="clearSearch" title="Clear search">x</button></div>
+        <div class="text-heading"><span id="matchCount">TEXT ON PAGE</span><button id="selectAll" title="Select visible results">Select all</button></div>
+        <div id="textList" class="text-list"></div>
+      </aside>
+      <section class="editor">
+        <div class="toolbar">
+          <div class="tool-group"><button data-action="highlight" class="tool active">Highlight</button><button data-action="redact" class="tool">Cover</button><button data-action="replace" class="tool">Replace</button></div>
+          <div class="tool-group color-tools" id="colorTools"><button class="swatch active" data-color="#f7d84b" style="--c:#f7d84b" title="Yellow"></button><button class="swatch" data-color="#77e5c0" style="--c:#77e5c0" title="Mint"></button><button class="swatch" data-color="#99c7ff" style="--c:#99c7ff" title="Blue"></button><button class="swatch" data-color="#ff9b9b" style="--c:#ff9b9b" title="Rose"></button></div>
+          <span id="selectionStatus" class="selection-status">Select text from the list</span>
+          <button id="undo" class="plain-button" disabled>Undo</button>
+          <button id="download" class="download" disabled>Download edited PDF</button>
+        </div>
+        <div class="page-nav"><button id="prevPage" disabled></button><span id="pageLabel">Page 1</span><button id="nextPage" disabled></button><span class="zoom"><button id="zoomOut">-</button><span id="zoomLabel">100%</span><button id="zoomIn">+</button></span></div>
+        <div id="canvasWrap" class="canvas-wrap"><div id="emptyPreview">Your PDF preview will appear here.</div><canvas id="pdfCanvas"></canvas><div id="overlay"></div></div>
+      </section>
+    </section>
+  </main>
+  <dialog id="replaceDialog"><form method="dialog"><h2>Replace selected text</h2><p id="replaceOriginal"></p><textarea id="replacementText" placeholder="Type the replacement text"></textarea><div><button value="cancel" class="plain-button">Cancel</button><button id="confirmReplace" value="default" class="download">Apply replacement</button></div></form></dialog>
+  <div id="toast" class="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+
