@@ -17,6 +17,10 @@ This is a dependency-free static site. Open `index.html` through any static web 
 - Highlights and cover blocks support yellow, mint, blue, rose, black, white, or any custom color.
 - An opacity slider controls highlight strength and the Fade tool. Existing edits can be clicked and restyled.
 - Added edits can be dragged directly on the page to reposition them and double-clicked to remove them.
+- Selecting a word or name checks the full PDF and reports duplicate occurrences and affected pages.
+- Replacement cleanup masks stay anchored over the original text while replacement text moves independently.
+- Click a replacement to reopen and rewrite its text, enlarge or reduce its text area and cleanup mask, or delete it.
+- Active edits use a high-contrast yellow selection border so their true size remains visible over white pages.
 - **Cover** and **Clean** are visual layers in the downloaded output. For legal-grade permanent redaction, use a dedicated workflow that removes original PDF source text.
 - Text extraction depends on a PDF having a text layer. Scanned image PDFs need OCR before their words appear in the sidebar.
 
